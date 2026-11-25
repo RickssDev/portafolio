@@ -1,13 +1,30 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Portafolio</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ricardo Radilla Rosales — Backend | Full Stack Software Engineer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portafolio de Ricardo Radilla Rosales, ingeniero de software Backend y Full Stack: APIs REST, Node.js, TypeScript, MySQL y Docker." />
+    <meta name="theme-color" content="#0a1020" />
+
+    <!-- Open Graph (vista previa al compartir el enlace) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ricardo Radilla Rosales — Backend | Full Stack Software Engineer" />
+    <meta property="og:description" content="Portafolio de Ricardo Radilla Rosales, ingeniero de software Backend y Full Stack: APIs REST, Node.js, TypeScript, MySQL y Docker." />
+    <!-- <meta property="og:image" content="https://tu-dominio.com/og-image.png" /> -->
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script>
+      // Aplica el tema guardado antes de pintar, para evitar el parpadeo.
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

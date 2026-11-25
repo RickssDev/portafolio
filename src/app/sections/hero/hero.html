@@ -1,0 +1,52 @@
+<section id="top" class="hero container" aria-labelledby="hero-title">
+  <div class="hero__content">
+    @if (profile.availability) {
+      <p class="hero__status"><span class="hero__dot" aria-hidden="true"></span> {{ profile.availability }}</p>
+    }
+
+    <p class="hero__greeting">Hola, soy</p>
+    <h1 id="hero-title" class="hero__name">{{ profile.name }}</h1>
+    <p class="hero__role">{{ profile.role }}</p>
+    <p class="hero__tagline">{{ profile.tagline }}</p>
+
+    <div class="hero__cta">
+      <a href="#projects" class="btn btn--primary">Ver proyectos</a>
+      @if (profile.cvUrl) {
+        <a [href]="profile.cvUrl" class="btn" download>
+          <app-icon name="download" [size]="18" /> Descargar CV
+        </a>
+      } @else {
+        <a href="#contact" class="btn">Contactar</a>
+      }
+    </div>
+
+    <ul class="hero__socials" aria-label="Redes y contacto">
+      @for (social of profile.socials; track social.url) {
+        <li>
+          <a
+            [href]="social.url"
+            [attr.target]="social.platform === 'email' ? null : '_blank'"
+            rel="noopener noreferrer"
+            [attr.aria-label]="social.label"
+          >
+            <app-icon [name]="social.platform" [size]="22" />
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <figure class="code-card" aria-hidden="true">
+    <div class="code-card__bar">
+      <span></span><span></span><span></span>
+      <p class="code-card__file">engineer.ts</p>
+    </div>
+    <pre class="code-card__body"><code><span class="k">const</span> <span class="v">engineer</span> = &#123;
+  name: <span class="s">'{{ profile.shortName }}'</span>,
+  focus: <span class="s">{{ list(profile.focus) }}</span>,
+  stack: <span class="s">{{ list(profile.coreStack) }}</span>,
+  location: <span class="s">'{{ profile.location }}'</span>,
+  available: <span class="k">{{ !!profile.availability }}</span>,
+&#125;;</code></pre>
+  </figure>
+</section>

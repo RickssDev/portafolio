@@ -1,0 +1,106 @@
+:host {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--nav-height);
+  transition:
+    background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+:host(.is-scrolled) {
+  background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--color-border);
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav__brand {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: var(--text-lg);
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+}
+
+.nav__link {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color var(--duration) var(--ease);
+
+  &:hover,
+  &.is-active {
+    color: var(--color-accent);
+  }
+}
+
+.nav__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.nav__icon-btn {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+
+  &:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+}
+
+.nav__toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav__actions {
+    margin-left: auto;
+  }
+
+  .nav__toggle {
+    display: grid;
+  }
+
+  .nav__links {
+    position: fixed;
+    inset: var(--nav-height) 0 auto;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    transform: translateY(-120%);
+    visibility: hidden;
+    transition:
+      transform var(--duration) var(--ease),
+      visibility var(--duration);
+
+    &.is-open {
+      transform: none;
+      visibility: visible;
+    }
+  }
+
+  .nav__link {
+    display: block;
+    padding: var(--space-3) 0;
+    font-size: var(--text-base);
+  }
+}

@@ -1,59 +1,46 @@
 # Portafolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.3.0.
+Portafolio personal en una sola página (one-page), hecho con Angular 22 y TypeScript.
 
-## Development server
-
-To start a local development server, run:
+## Comandos
 
 ```bash
-ng serve
+npm install      # instalar dependencias
+npm start        # servidor de desarrollo en http://localhost:4200
+npm test         # tests unitarios (Vitest)
+npm run build    # build de producción en dist/portafolio/browser
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Dónde cambiar cada cosa
 
-## Code scaffolding
+| Quiero cambiar…                   | Archivo                                   |
+| --------------------------------- | ----------------------------------------- |
+| Textos, experiencia, proyectos    | `src/app/core/data/portfolio.data.ts`     |
+| Colores, tipografía, espaciado    | `src/styles/_tokens.scss`                 |
+| Título, descripción y SEO         | `src/index.html`                          |
+| Foto, CV e imágenes               | carpeta `public/` (p. ej. `public/images`) |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Estructura
 
-```bash
-ng generate component component-name
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── data/portfolio.data.ts     ← todo el contenido del sitio
+│   │   ├── models/                    ← tipos (Profile, Project, Experience…)
+│   │   └── services/theme.service.ts  ← tema claro/oscuro
+│   ├── layout/                        ← navbar (scroll-spy, menú móvil) y footer
+│   ├── sections/                      ← una carpeta por sección de la página
+│   │   ├── hero/  about/  skills/
+│   │   └── projects/  experience/  contact/
+│   └── shared/                        ← piezas reutilizables
+│       ├── components/  (icon, section-header)
+│       └── directives/  (appReveal: animación al hacer scroll)
+└── styles/                            ← tokens de diseño y estilos base
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Añadir una sección nueva
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Crea `src/app/sections/<nombre>/` con su componente (`<section id="<nombre>">`).
+2. Agrégalo en `src/app/app.ts` (imports) y en `src/app/app.html`.
+3. Añádelo a `NAV_SECTIONS` en `portfolio.data.ts` (define el menú y la numeración 01., 02.…).

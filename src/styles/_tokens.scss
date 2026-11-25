@@ -1,0 +1,72 @@
+// Tokens de diseño: cambia aquí colores, tipografía y espaciado de TODO el sitio.
+// Paleta: azul marino / pizarra con acento azul acero. Sobria y técnica.
+
+:root {
+  // Tipografía
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.6rem, 1.3rem + 1.2vw, 2.25rem);
+  --text-hero: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+
+  // Espaciado (escala de 4px)
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  // Layout
+  --container: 70rem;
+  --nav-height: 4rem;
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-full: 999px;
+
+  // Movimiento
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 250ms;
+
+  // Color: tema oscuro (por defecto)
+  --color-bg: #0a1020;
+  --color-surface: #0f172a;
+  --color-surface-2: #15203a;
+  --color-border: #1e2a44;
+  --color-grid: rgb(148 163 184 / 0.05);
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-accent: #5b9dff;
+  --color-accent-contrast: #06101f;
+  --color-accent-soft: rgb(91 157 255 / 0.1);
+  --color-success: #34d399;
+  --shadow: 0 16px 40px -16px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --color-bg: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f8;
+  --color-border: #dbe2ec;
+  --color-grid: rgb(15 23 42 / 0.04);
+  --color-text: #0f1b2d;
+  --color-text-muted: #4b5a70;
+  --color-accent: #1d4ed8;
+  --color-accent-contrast: #ffffff;
+  --color-accent-soft: rgb(29 78 216 / 0.08);
+  --color-success: #059669;
+  --shadow: 0 16px 40px -18px rgb(15 23 42 / 0.25);
+
+  color-scheme: light;
+}

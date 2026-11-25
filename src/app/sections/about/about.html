@@ -1,0 +1,58 @@
+<section id="about" class="section container" aria-labelledby="about-title">
+  <app-section-header sectionId="about" />
+
+  <div class="about">
+    <div class="about__text" appReveal>
+      @if (profile.avatar) {
+        <img class="about__avatar" [src]="profile.avatar" [alt]="'Foto de ' + profile.name" width="160" height="160" />
+      }
+      @for (paragraph of profile.about; track $index) {
+        <p>{{ paragraph }}</p>
+      }
+
+      <dl class="about__facts">
+        <div>
+          <dt>Ubicación</dt>
+          <dd>{{ profile.location }}</dd>
+        </div>
+        <div>
+          <dt>Enfoque</dt>
+          <dd>{{ profile.focus.join(' · ') }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="about__side">
+      @if (education.length) {
+        <article class="card" appReveal>
+          <h3 class="about__card-title">Formación</h3>
+          <ul class="about__list">
+            @for (item of education; track item.degree) {
+              <li>
+                <strong>{{ item.degree }}</strong>
+                @if (item.period) {
+                  <span class="about__meta">{{ item.period }}</span>
+                }
+                <span>{{ item.institution }}</span>
+              </li>
+            }
+          </ul>
+        </article>
+      }
+
+      @if (languages.length) {
+        <article class="card" appReveal>
+          <h3 class="about__card-title">Idiomas</h3>
+          <ul class="about__langs">
+            @for (lang of languages; track lang.name) {
+              <li>
+                <span>{{ lang.name }}</span>
+                <span class="tag">{{ lang.level }}</span>
+              </li>
+            }
+          </ul>
+        </article>
+      }
+    </aside>
+  </div>
+</section>

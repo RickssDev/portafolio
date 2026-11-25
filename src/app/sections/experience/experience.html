@@ -1,0 +1,40 @@
+<section id="experience" class="section container" aria-labelledby="experience-title">
+  <app-section-header sectionId="experience" />
+
+  <ol class="timeline">
+    @for (job of experience; track job.company + job.position) {
+      <li class="timeline__item card" appReveal>
+        <header class="timeline__header">
+          <div>
+            <h3 class="timeline__title">{{ job.position }}</h3>
+            <p class="timeline__company">
+              {{ job.company }}
+              @if (job.location) {
+                <span class="timeline__location">· {{ job.location }}</span>
+              }
+            </p>
+          </div>
+          <span class="tag">{{ job.period }}</span>
+        </header>
+
+        @if (job.summary) {
+          <p class="timeline__summary">{{ job.summary }}</p>
+        }
+
+        <ul class="timeline__highlights">
+          @for (h of job.highlights; track $index) {
+            <li>{{ h }}</li>
+          }
+        </ul>
+
+        @if (job.stack?.length) {
+          <ul class="tag-list">
+            @for (tech of job.stack; track tech) {
+              <li class="tag">{{ tech }}</li>
+            }
+          </ul>
+        }
+      </li>
+    }
+  </ol>
+</section>
