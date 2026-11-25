@@ -53,11 +53,12 @@ export const PORTFOLIO: PortfolioData = {
     {
       company: 'Sysyra Solutions',
       position: 'Pasante de Webmaster',
-      period: '4 meses',
+      period: 'Ene 2025 — Abr 2025',
       highlights: [
         'Mantenimiento y optimización de plataformas web corporativas, implementando funcionalidades personalizadas que mejoraron la estructura del sitio y la navegación de los usuarios.',
         'Elaboración de documentación técnica y guías de uso de APIs para equipos internos, facilitando la incorporación de nuevos integrantes y el mantenimiento de la plataforma.',
       ],
+      stack: ['PHP', 'Blade', 'Shopify', 'CSS'],
     },
   ],
 
