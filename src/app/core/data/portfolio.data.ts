@@ -13,6 +13,7 @@ export const PORTFOLIO: PortfolioData = {
     name: 'Ricardo Radilla Rosales',
     shortName: 'Ricardo Radilla',
     role: 'Backend | Full Stack Software Engineer',
+    cardRole: { es: 'Desarrollador Jr Fullstack', en: 'Jr Fullstack Developer' },
     tagline: {
       es: 'Diseño e implemento APIs REST, servicios backend y aplicaciones web completas, desde la base de datos hasta el despliegue.',
       en: 'I design and build REST APIs, backend services and full web applications, from the database all the way to deployment.',
@@ -151,7 +152,7 @@ export const PORTFOLIO: PortfolioData = {
     {
       company: 'Sysyra Solutions',
       position: { es: 'Pasante de Webmaster', en: 'Webmaster Intern' },
-      period: { es: 'Ene 2025 — Abr 2025', en: 'Jan 2025 — Apr 2025' },
+      period: { es: 'Abr 2025 — Ago 2025', en: 'Apr 2025 — Aug 2025' },
       highlights: [
         {
           es: 'Mantenimiento y optimización de plataformas web corporativas, implementando funcionalidades personalizadas que mejoraron la estructura del sitio y la navegación de los usuarios.',

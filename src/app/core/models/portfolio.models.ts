@@ -24,9 +24,11 @@ export interface SocialLink {
 
 export interface Profile {
   name: string;
-  /** Nombre corto para la tarjeta de código del hero */
+  /** Nombre corto (texto alternativo, metadatos) */
   shortName: string;
   role: Text;
+  /** Rol que aparece en la tarjeta de código del hero (ricardo.ts) */
+  cardRole: Text;
   tagline: Text;
   location: Text;
   email: string;

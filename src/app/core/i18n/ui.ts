@@ -55,7 +55,6 @@ export const UI = {
     },
   },
   footer: {
-    madeWith: { es: 'Hecho con Angular.', en: 'Built with Angular.' },
-    backToTop: { es: 'Volver arriba ↑', en: 'Back to top ↑' },
+    backToTop: { es: 'Volver arriba', en: 'Back to top' },
   },
 } satisfies Record<string, Record<string, Text | Record<string, Text>>>;

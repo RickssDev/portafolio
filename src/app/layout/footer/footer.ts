@@ -8,8 +8,8 @@ import { UI } from '../../core/i18n/ui';
   imports: [TrPipe],
   template: `
     <footer class="container footer">
-      <p>© {{ year }} {{ name }}. {{ ui.madeWith | tr }}</p>
-      <a href="#top">{{ ui.backToTop | tr }}</a>
+      <p>© {{ year }} {{ name }}</p>
+      <a href="#top" class="btn">{{ ui.backToTop | tr }}</a>
     </footer>
   `,
   styles: `
@@ -17,13 +17,18 @@ import { UI } from '../../core/i18n/ui';
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      align-items: center;
       gap: var(--space-4);
       padding-block: var(--space-8);
       border-top: 1px solid var(--color-border);
       font-size: var(--text-sm);
       color: var(--color-text-muted);
     }
-    a:hover {
+    .btn {
+      padding: var(--space-2) var(--space-4);
+      color: var(--color-text);
+    }
+    .btn:hover {
       color: var(--color-accent);
     }
   `,

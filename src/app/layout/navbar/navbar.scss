@@ -34,17 +34,21 @@
   font-weight: 700;
   font-size: var(--text-lg);
   letter-spacing: 0.05em;
-  color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
+  // Mismo diseño que el favicon (public/favicon.svg): fondo negro sin borde,
+  // letras RRR con degradado dorado → blanco
+  background: #0a0a0a;
   border-radius: var(--radius);
-  background: var(--color-accent-soft);
-  transition:
-    background-color var(--duration) var(--ease),
-    color var(--duration) var(--ease);
+  transition: box-shadow var(--duration) var(--ease);
+
+  span[aria-hidden] {
+    background: linear-gradient(135deg, var(--color-gold) 15%, #ffffff 85%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 
   &:hover {
-    background: var(--color-accent);
-    color: var(--color-accent-contrast);
+    box-shadow: 0 0 18px -4px color-mix(in srgb, var(--color-gold) 55%, transparent);
   }
 }
 

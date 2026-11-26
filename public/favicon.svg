@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="2" y="2" width="60" height="60" rx="12" fill="#0a1020" stroke="#5b9dff" stroke-width="3"/>
-  <text x="32" y="41" text-anchor="middle" textLength="46" lengthAdjust="spacingAndGlyphs"
-        font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="25" font-weight="700"
-        fill="#5b9dff">RRR</text>
+  <!-- Logo RRR: mismo diseño que el de la navbar (fondo negro, letras con degradado dorado → blanco) -->
+  <defs>
+    <linearGradient id="rrr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0.15" stop-color="#d4af37"/>
+      <stop offset="0.85" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#0a0a0a"/>
+  <text x="32" y="41" text-anchor="middle" textLength="48" lengthAdjust="spacingAndGlyphs"
+        font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="26" font-weight="700"
+        fill="url(#rrr)">RRR</text>
 </svg>

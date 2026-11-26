@@ -39,14 +39,15 @@
   <figure class="code-card" aria-hidden="true">
     <div class="code-card__bar">
       <span></span><span></span><span></span>
-      <p class="code-card__file">engineer.ts</p>
+      <p class="code-card__file">ricardo.ts</p>
     </div>
-    <pre class="code-card__body"><code><span class="k">const</span> <span class="v">engineer</span> = &#123;
-  name: <span class="s">'{{ profile.shortName }}'</span>,
+    <pre class="code-card__body"><code><span class="k">const</span> <span class="v">ricardo</span> = &#123;
+  rol: <span class="s">'{{ profile.cardRole | tr }}'</span>,
   focus: <span class="s">{{ list(profile.focus) }}</span>,
   stack: <span class="s">{{ list(profile.coreStack) }}</span>,
+  idioma: <span class="s">{{ languages() }}</span>,
   location: <span class="s">'{{ profile.location | tr }}'</span>,
-  available: <span class="k">{{ !!profile.availability }}</span>,
+  disponible: <span class="k">{{ !!profile.availability }}</span>,
 &#125;;</code></pre>
   </figure>
 </section>
