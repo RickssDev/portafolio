@@ -13,6 +13,7 @@ import { Icon } from '../../shared/components/icon/icon';
   styleUrl: './navbar.scss',
   host: {
     '[class.is-scrolled]': 'scrolled()',
+    '[style.--progress]': 'progress()',
     '(window:scroll)': 'onScroll()',
     '(document:keydown.escape)': 'menuOpen.set(false)',
   },
@@ -26,11 +27,13 @@ export class Navbar {
 
   protected readonly menuOpen = signal(false);
   protected readonly scrolled = signal(false);
+  /** Avance del scroll de 0 a 1 (barra inferior de la navbar). */
+  protected readonly progress = signal(0);
   protected readonly activeId = signal<string | null>(null);
 
+  /** Iniciales del nombre completo: "Ricardo Radilla Rosales" → "RRR". */
   protected readonly initials = this.profile.name
     .split(' ')
-    .slice(0, 2)
     .map((w) => w[0])
     .join('')
     .toUpperCase();
@@ -38,25 +41,30 @@ export class Navbar {
   constructor() {
     const destroyRef = inject(DestroyRef);
 
-    // Scroll-spy: resalta el enlace de la sección visible.
+    // Scroll-spy: marca el enlace de la sección que ocupa el centro de la pantalla.
     afterNextRender(() => {
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            if (entry.isIntersecting) this.activeId.set(entry.target.id);
+            if (!entry.isIntersecting) continue;
+            const id = entry.target.id;
+            this.activeId.set(id === 'top' ? null : id);
           }
         },
         { rootMargin: '-45% 0px -50% 0px' },
       );
-      for (const { id } of this.sections) {
+      for (const id of ['top', ...this.sections.map((s) => s.id)]) {
         const el = document.getElementById(id);
         if (el) observer.observe(el);
       }
+      this.onScroll();
       destroyRef.onDestroy(() => observer.disconnect());
     });
   }
 
   protected onScroll(): void {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
     this.scrolled.set(window.scrollY > 8);
+    this.progress.set(max > 0 ? Math.min(window.scrollY / max, 1) : 0);
   }
 }

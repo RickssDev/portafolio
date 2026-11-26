@@ -1,4 +1,4 @@
-<nav class="nav container" [attr.aria-label]="ui.main | tr">
+<nav class="nav" [attr.aria-label]="ui.main | tr">
   <a href="#top" class="nav__brand" (click)="menuOpen.set(false)">
     <span aria-hidden="true">{{ initials }}</span>
     <span class="sr-only">{{ profile.name }} — {{ ui.home | tr }}</span>
@@ -54,3 +54,5 @@
     </button>
   </div>
 </nav>
+
+<span class="nav__progress" aria-hidden="true"></span>

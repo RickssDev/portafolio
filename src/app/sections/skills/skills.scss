@@ -1,21 +1,55 @@
-// Grupos en columnas tipo "masonry" para que las tarjetas de distinto alto encajen.
+// Rejilla simétrica: 2 tarjetas por fila, alineadas arriba y con la misma altura.
+// Se usa una rejilla de 6 columnas para poder repartir filas en 1/2 + 1/2 o 2/3 + 1/3.
 .skills {
-  columns: 22rem;
-  column-gap: var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-6);
 }
 
 .skill-group {
-  break-inside: avoid;
-  margin-bottom: var(--space-6);
+  grid-column: span 3;
+  position: relative;
+  isolation: isolate;
   padding: var(--space-6);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
+  transition:
+    border-color 300ms var(--ease),
+    box-shadow 300ms var(--ease);
+
+  // Aura que sigue al cursor (posición en --mx/--my, la pone appSpotlight)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      22rem circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--color-accent) 14%, transparent),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 300ms var(--ease);
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-accent) 25%, transparent),
+      0 0 40px -6px color-mix(in srgb, var(--color-accent) 35%, transparent);
+
+    &::before {
+      opacity: 1;
+    }
+  }
 }
 
 .skill-group__title {
-  margin-bottom: var(--space-4);
-  font-size: var(--text-base);
+  margin-bottom: var(--space-6);
+  font-size: var(--text-xl);
   font-weight: 600;
 
   span {
@@ -26,8 +60,25 @@
 
 .skill-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(5.75rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
   gap: var(--space-3);
+}
+
+.skill-group--wide {
+  grid-column: span 4;
+}
+
+.skill-group--narrow {
+  grid-column: span 2;
+}
+
+@media (max-width: 860px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+  .skill-group {
+    grid-column: 1 / -1;
+  }
 }
 
 // ---------- Tarjeta de cada habilidad ----------

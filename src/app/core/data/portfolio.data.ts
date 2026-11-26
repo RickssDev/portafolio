@@ -18,7 +18,7 @@ export const PORTFOLIO: PortfolioData = {
       en: 'I design and build REST APIs, backend services and full web applications, from the database all the way to deployment.',
     },
     location: { es: 'Ciudad de México, México', en: 'Mexico City, Mexico' },
-    email: 'ricardoradillar@gmail.com',
+    email: 'rickss.dev@gmail.com',
     focus: ['Backend', 'Full Stack'],
     coreStack: ['Node.js', 'TypeScript', 'MySQL', 'Docker'],
     avatar: undefined,
@@ -37,11 +37,13 @@ export const PORTFOLIO: PortfolioData = {
     socials: [
       { platform: 'github', label: 'GitHub', url: 'https://github.com/RickssDev' },
       { platform: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/ricardor2005' },
-      { platform: 'email', label: { es: 'Correo', en: 'Email' }, url: 'mailto:ricardoradillar@gmail.com' },
+      { platform: 'email', label: { es: 'Correo', en: 'Email' }, url: 'mailto:rickss.dev@gmail.com' },
     ],
   },
 
   // Cada habilidad lleva un `icon`: la lista está en shared/components/skill-icon/skill-icons.ts
+  // Se muestran en 2 columnas, por parejas: ordénalas para que cada pareja tenga un número parecido
+  // de habilidades. `size: 'wide' | 'narrow'` reparte una fila en 2/3 + 1/3.
   skills: [
     {
       category: { es: 'Lenguajes', en: 'Languages' },
@@ -53,6 +55,18 @@ export const PORTFOLIO: PortfolioData = {
         { name: 'C++', icon: 'cplusplus' },
         { name: 'SQL', icon: 'sql' },
         { name: 'Bash', icon: 'bash' },
+      ],
+    },
+    {
+      category: { es: 'DevOps y Herramientas', en: 'DevOps & Tools' },
+      items: [
+        { name: 'Docker', icon: 'docker' },
+        { name: 'GitHub Actions', icon: 'githubactions' },
+        { name: 'CI/CD', icon: 'cicd' },
+        { name: 'Nginx', icon: 'nginx' },
+        { name: 'Cloudflare', icon: 'cloudflare' },
+        { name: 'Git', icon: 'git' },
+        { name: 'GitHub', icon: 'github' },
       ],
     },
     {
@@ -82,6 +96,14 @@ export const PORTFOLIO: PortfolioData = {
       ],
     },
     {
+      category: { es: 'Contenedores', en: 'Containers' },
+      items: [
+        { name: 'Docker Compose', icon: 'docker' },
+        { name: 'Multi-stage Builds', icon: 'layers' },
+        { name: { es: 'Arquitectura Multicontenedor', en: 'Multi-container Architecture' }, icon: 'boxes' },
+      ],
+    },
+    {
       category: { es: 'Seguridad', en: 'Security' },
       items: [
         { name: 'JWT', icon: 'jwt' },
@@ -100,27 +122,8 @@ export const PORTFOLIO: PortfolioData = {
       ],
     },
     {
-      category: { es: 'DevOps y Herramientas', en: 'DevOps & Tools' },
-      items: [
-        { name: 'Docker', icon: 'docker' },
-        { name: 'GitHub Actions', icon: 'githubactions' },
-        { name: 'CI/CD', icon: 'cicd' },
-        { name: 'Nginx', icon: 'nginx' },
-        { name: 'Cloudflare', icon: 'cloudflare' },
-        { name: 'Git', icon: 'git' },
-        { name: 'GitHub', icon: 'github' },
-      ],
-    },
-    {
-      category: { es: 'Contenedores', en: 'Containers' },
-      items: [
-        { name: 'Docker Compose', icon: 'docker' },
-        { name: 'Multi-stage Builds', icon: 'layers' },
-        { name: { es: 'Arquitectura Multicontenedor', en: 'Multi-container Architecture' }, icon: 'boxes' },
-      ],
-    },
-    {
       category: { es: 'Arquitecturas y Prácticas', en: 'Architecture & Practices' },
+      size: 'wide',
       items: [
         { name: { es: 'Monolito Modular', en: 'Modular Monolith' }, icon: 'modules' },
         { name: { es: 'Microservicios', en: 'Microservices' }, icon: 'network' },
@@ -134,6 +137,7 @@ export const PORTFOLIO: PortfolioData = {
     },
     {
       category: { es: 'IA', en: 'AI' },
+      size: 'narrow',
       items: [
         { name: 'Claude Code', icon: 'claude' },
         { name: 'ChatGPT', icon: 'sparkles' },
@@ -165,6 +169,7 @@ export const PORTFOLIO: PortfolioData = {
   projects: [
     {
       title: 'DentissaApp',
+      status: 'completed',
       subtitle: { es: 'Gestión de consultorios dentales', en: 'Dental clinic management' },
       description: {
         es: 'Plataforma desarrollada con una arquitectura de monolito modular para una mejor escalabilidad, con despliegue en contenedores Docker.',
@@ -175,6 +180,7 @@ export const PORTFOLIO: PortfolioData = {
     },
     {
       title: 'InventarioFerretería',
+      status: 'completed',
       subtitle: { es: 'Control y gestión de inventario', en: 'Inventory control and management' },
       description: {
         es: 'Proyecto desarrollado en equipo, empleando una arquitectura modular para una organización más eficaz del código y del trabajo.',
@@ -184,6 +190,7 @@ export const PORTFOLIO: PortfolioData = {
     },
     {
       title: 'Barbershop',
+      status: 'completed',
       subtitle: { es: 'Gestión y administración de citas', en: 'Appointment management' },
       description: {
         es: 'Plataforma construida por etapas según las necesidades del cliente, siguiendo la metodología Kanban.',
@@ -222,7 +229,7 @@ export const PORTFOLIO: PortfolioData = {
 };
 
 /**
- * Secciones de la página, en orden. Define el menú y la numeración ("01.", "02."…).
+ * Secciones de la página, en orden (define el menú de navegación).
  * El id debe coincidir con el de cada <section>.
  */
 export const NAV_SECTIONS: NavSection[] = [
@@ -232,12 +239,6 @@ export const NAV_SECTIONS: NavSection[] = [
   { id: 'experience', label: { es: 'Experiencia', en: 'Experience' } },
   { id: 'contact', label: { es: 'Contacto', en: 'Contact' } },
 ];
-
-/** Devuelve '01.', '02.'… según la posición de la sección en NAV_SECTIONS. */
-export function sectionNumber(id: string): string {
-  const index = NAV_SECTIONS.findIndex((s) => s.id === id);
-  return `${String(index + 1).padStart(2, '0')}.`;
-}
 
 /**
  * Token de inyección: los componentes piden los datos con `inject(PORTFOLIO_DATA)`.

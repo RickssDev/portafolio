@@ -41,6 +41,10 @@ export const UI = {
     demoOf: { es: 'Demo de', en: 'Live demo of' },
     screenshotOf: { es: 'Captura de', en: 'Screenshot of' },
     empty: { es: 'Pronto habrá proyectos aquí.', en: 'Projects coming soon.' },
+    status: {
+      completed: { es: 'Completado', en: 'Completed' },
+      'in-progress': { es: 'En curso', en: 'In progress' },
+    },
   },
   contact: {
     eyebrow: { es: '¿Qué sigue?', en: "What's next?" },

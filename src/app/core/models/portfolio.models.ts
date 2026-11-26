@@ -52,6 +52,8 @@ export interface Skill {
 
 export interface SkillGroup {
   category: Text;
+  /** Ancho en escritorio: normal = 1/2 de la fila; 'wide' = 2/3; 'narrow' = 1/3 */
+  size?: 'wide' | 'narrow';
   items: Skill[];
 }
 
@@ -65,8 +67,12 @@ export interface Experience {
   stack?: string[];
 }
 
+/** completed = terminado (verde) · in-progress = en curso (ámbar) */
+export type ProjectStatus = 'completed' | 'in-progress';
+
 export interface Project {
   title: string;
+  status: ProjectStatus;
   subtitle: Text;
   description: Text;
   stack: string[];

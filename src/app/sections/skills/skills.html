@@ -3,7 +3,13 @@
 
   <div class="skills">
     @for (group of skills; track $index) {
-      <article class="skill-group" appReveal>
+      <article
+        class="skill-group"
+        [class.skill-group--wide]="group.size === 'wide'"
+        [class.skill-group--narrow]="group.size === 'narrow'"
+        appReveal
+        appSpotlight
+      >
         <h3 class="skill-group__title"><span aria-hidden="true">//</span> {{ group.category | tr }}</h3>
 
         <ul class="skill-grid">

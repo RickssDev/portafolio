@@ -6,6 +6,10 @@
       <article class="card project" [class.project--featured]="project.featured" appReveal>
         <header class="project__header">
           <span class="project__index" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <span class="status" [class]="'status status--' + project.status">
+            <span class="status__dot" aria-hidden="true"></span>
+            {{ ui.status[project.status] | tr }}
+          </span>
           <div class="project__links">
             @if (project.repoUrl) {
               <a [href]="project.repoUrl" target="_blank" rel="noopener noreferrer" [attr.aria-label]="(ui.codeOf | tr) + ' ' + project.title">

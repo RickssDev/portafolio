@@ -43,4 +43,4 @@ src/
 
 1. Crea `src/app/sections/<nombre>/` con su componente (`<section id="<nombre>">`).
 2. Agrégalo en `src/app/app.ts` (imports) y en `src/app/app.html`.
-3. Añádelo a `NAV_SECTIONS` en `portfolio.data.ts` (define el menú y la numeración 01., 02.…).
+3. Añádelo a `NAV_SECTIONS` en `portfolio.data.ts` (define el menú de navegación).

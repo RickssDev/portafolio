@@ -4,10 +4,11 @@ import { TrPipe } from '../../core/i18n/tr.pipe';
 import { SectionHeader } from '../../shared/components/section-header/section-header';
 import { SkillIcon, skillColor } from '../../shared/components/skill-icon/skill-icon';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { SpotlightDirective } from '../../shared/directives/spotlight.directive';
 
 @Component({
   selector: 'app-skills',
-  imports: [SectionHeader, RevealDirective, SkillIcon, TrPipe],
+  imports: [SectionHeader, RevealDirective, SpotlightDirective, SkillIcon, TrPipe],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })

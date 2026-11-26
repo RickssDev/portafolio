@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { PORTFOLIO_DATA, sectionNumber } from '../../core/data/portfolio.data';
+import { PORTFOLIO_DATA } from '../../core/data/portfolio.data';
 import { TrPipe } from '../../core/i18n/tr.pipe';
 import { UI } from '../../core/i18n/ui';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
@@ -11,7 +11,7 @@ import { Icon } from '../../shared/components/icon/icon';
   template: `
     <section id="contact" class="section container" aria-labelledby="contact-title">
       <div class="contact card" appReveal>
-        <p class="contact__eyebrow">{{ number }} {{ ui.eyebrow | tr }}</p>
+        <p class="contact__eyebrow">{{ ui.eyebrow | tr }}</p>
         <h2 id="contact-title" class="contact__title">{{ ui.title | tr }}</h2>
         <p class="contact__text">{{ ui.text | tr }}</p>
         <div class="contact__actions">
@@ -63,6 +63,5 @@ import { Icon } from '../../shared/components/icon/icon';
 export class Contact {
   protected readonly profile = inject(PORTFOLIO_DATA).profile;
   protected readonly webSocials = this.profile.socials.filter((s) => s.platform !== 'email');
-  protected readonly number = sectionNumber('contact');
   protected readonly ui = UI.contact;
 }
