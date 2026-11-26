@@ -1,27 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { PORTFOLIO_DATA, sectionNumber } from '../../core/data/portfolio.data';
+import { TrPipe } from '../../core/i18n/tr.pipe';
+import { UI } from '../../core/i18n/ui';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { Icon } from '../../shared/components/icon/icon';
 
 @Component({
   selector: 'app-contact',
-  imports: [RevealDirective, Icon],
+  imports: [RevealDirective, Icon, TrPipe],
   template: `
     <section id="contact" class="section container" aria-labelledby="contact-title">
       <div class="contact card" appReveal>
-        <p class="contact__eyebrow">{{ number }} ¿Qué sigue?</p>
-        <h2 id="contact-title" class="contact__title">Hablemos</h2>
-        <p class="contact__text">
-          Estoy abierto a oportunidades en desarrollo Backend y Full Stack. Si tienes un proyecto
-          o una vacante, escríbeme y te respondo pronto.
-        </p>
+        <p class="contact__eyebrow">{{ number }} {{ ui.eyebrow | tr }}</p>
+        <h2 id="contact-title" class="contact__title">{{ ui.title | tr }}</h2>
+        <p class="contact__text">{{ ui.text | tr }}</p>
         <div class="contact__actions">
           <a class="btn btn--primary" [href]="'mailto:' + profile.email">
             <app-icon name="email" [size]="18" /> {{ profile.email }}
           </a>
           @for (social of webSocials; track social.url) {
             <a class="btn" [href]="social.url" target="_blank" rel="noopener noreferrer">
-              <app-icon [name]="social.platform" [size]="18" /> {{ social.label }}
+              <app-icon [name]="social.platform" [size]="18" /> {{ social.label | tr }}
             </a>
           }
         </div>
@@ -65,4 +64,5 @@ export class Contact {
   protected readonly profile = inject(PORTFOLIO_DATA).profile;
   protected readonly webSocials = this.profile.socials.filter((s) => s.platform !== 'email');
   protected readonly number = sectionNumber('contact');
+  protected readonly ui = UI.contact;
 }

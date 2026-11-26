@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TrPipe } from './core/i18n/tr.pipe';
+import { UI } from './core/i18n/ui';
 import { Navbar } from './layout/navbar/navbar';
 import { Footer } from './layout/footer/footer';
 import { Hero } from './sections/hero/hero';
@@ -10,7 +12,9 @@ import { Contact } from './sections/contact/contact';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Footer, Hero, About, Skills, ExperienceSection, Projects, Contact],
+  imports: [Navbar, Footer, Hero, About, Skills, ExperienceSection, Projects, Contact, TrPipe],
   templateUrl: './app.html',
 })
-export class App {}
+export class App {
+  protected readonly ui = UI;
+}

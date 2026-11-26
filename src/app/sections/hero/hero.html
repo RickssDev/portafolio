@@ -1,33 +1,33 @@
 <section id="top" class="hero container" aria-labelledby="hero-title">
   <div class="hero__content">
     @if (profile.availability) {
-      <p class="hero__status"><span class="hero__dot" aria-hidden="true"></span> {{ profile.availability }}</p>
+      <p class="hero__status"><span class="hero__dot" aria-hidden="true"></span> {{ profile.availability | tr }}</p>
     }
 
-    <p class="hero__greeting">Hola, soy</p>
+    <p class="hero__greeting">{{ ui.greeting | tr }}</p>
     <h1 id="hero-title" class="hero__name">{{ profile.name }}</h1>
-    <p class="hero__role">{{ profile.role }}</p>
-    <p class="hero__tagline">{{ profile.tagline }}</p>
+    <p class="hero__role">{{ profile.role | tr }}</p>
+    <p class="hero__tagline">{{ profile.tagline | tr }}</p>
 
     <div class="hero__cta">
-      <a href="#projects" class="btn btn--primary">Ver proyectos</a>
+      <a href="#projects" class="btn btn--primary">{{ ui.viewProjects | tr }}</a>
       @if (profile.cvUrl) {
         <a [href]="profile.cvUrl" class="btn" download>
-          <app-icon name="download" [size]="18" /> Descargar CV
+          <app-icon name="download" [size]="18" /> {{ ui.downloadCv | tr }}
         </a>
       } @else {
-        <a href="#contact" class="btn">Contactar</a>
+        <a href="#contact" class="btn">{{ ui.contact | tr }}</a>
       }
     </div>
 
-    <ul class="hero__socials" aria-label="Redes y contacto">
+    <ul class="hero__socials" [attr.aria-label]="ui.socials | tr">
       @for (social of profile.socials; track social.url) {
         <li>
           <a
             [href]="social.url"
             [attr.target]="social.platform === 'email' ? null : '_blank'"
             rel="noopener noreferrer"
-            [attr.aria-label]="social.label"
+            [attr.aria-label]="social.label | tr"
           >
             <app-icon [name]="social.platform" [size]="22" />
           </a>
@@ -45,7 +45,7 @@
   name: <span class="s">'{{ profile.shortName }}'</span>,
   focus: <span class="s">{{ list(profile.focus) }}</span>,
   stack: <span class="s">{{ list(profile.coreStack) }}</span>,
-  location: <span class="s">'{{ profile.location }}'</span>,
+  location: <span class="s">'{{ profile.location | tr }}'</span>,
   available: <span class="k">{{ !!profile.availability }}</span>,
 &#125;;</code></pre>
   </figure>

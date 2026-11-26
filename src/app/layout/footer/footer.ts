@@ -1,12 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { PORTFOLIO_DATA } from '../../core/data/portfolio.data';
+import { TrPipe } from '../../core/i18n/tr.pipe';
+import { UI } from '../../core/i18n/ui';
 
 @Component({
   selector: 'app-footer',
+  imports: [TrPipe],
   template: `
     <footer class="container footer">
-      <p>© {{ year }} {{ name }}. Hecho con Angular.</p>
-      <a href="#top">Volver arriba ↑</a>
+      <p>© {{ year }} {{ name }}. {{ ui.madeWith | tr }}</p>
+      <a href="#top">{{ ui.backToTop | tr }}</a>
     </footer>
   `,
   styles: `
@@ -27,5 +30,6 @@ import { PORTFOLIO_DATA } from '../../core/data/portfolio.data';
 })
 export class Footer {
   protected readonly name = inject(PORTFOLIO_DATA).profile.name;
+  protected readonly ui = UI.footer;
   protected readonly year = new Date().getFullYear();
 }

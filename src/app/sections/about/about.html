@@ -4,19 +4,25 @@
   <div class="about">
     <div class="about__text" appReveal>
       @if (profile.avatar) {
-        <img class="about__avatar" [src]="profile.avatar" [alt]="'Foto de ' + profile.name" width="160" height="160" />
+        <img
+          class="about__avatar"
+          [src]="profile.avatar"
+          [alt]="(ui.photoOf | tr) + ' ' + profile.name"
+          width="160"
+          height="160"
+        />
       }
       @for (paragraph of profile.about; track $index) {
-        <p>{{ paragraph }}</p>
+        <p>{{ paragraph | tr }}</p>
       }
 
       <dl class="about__facts">
         <div>
-          <dt>Ubicación</dt>
-          <dd>{{ profile.location }}</dd>
+          <dt>{{ ui.location | tr }}</dt>
+          <dd>{{ profile.location | tr }}</dd>
         </div>
         <div>
-          <dt>Enfoque</dt>
+          <dt>{{ ui.focus | tr }}</dt>
           <dd>{{ profile.focus.join(' · ') }}</dd>
         </div>
       </dl>
@@ -25,13 +31,13 @@
     <aside class="about__side">
       @if (education.length) {
         <article class="card" appReveal>
-          <h3 class="about__card-title">Formación</h3>
+          <h3 class="about__card-title">{{ ui.education | tr }}</h3>
           <ul class="about__list">
-            @for (item of education; track item.degree) {
+            @for (item of education; track $index) {
               <li>
-                <strong>{{ item.degree }}</strong>
+                <strong>{{ item.degree | tr }}</strong>
                 @if (item.period) {
-                  <span class="about__meta">{{ item.period }}</span>
+                  <span class="about__meta">{{ item.period | tr }}</span>
                 }
                 <span>{{ item.institution }}</span>
               </li>
@@ -42,12 +48,12 @@
 
       @if (languages.length) {
         <article class="card" appReveal>
-          <h3 class="about__card-title">Idiomas</h3>
+          <h3 class="about__card-title">{{ ui.languages | tr }}</h3>
           <ul class="about__langs">
-            @for (lang of languages; track lang.name) {
+            @for (lang of languages; track $index) {
               <li>
-                <span>{{ lang.name }}</span>
-                <span class="tag">{{ lang.level }}</span>
+                <span>{{ lang.name | tr }}</span>
+                <span class="tag">{{ lang.level | tr }}</span>
               </li>
             }
           </ul>

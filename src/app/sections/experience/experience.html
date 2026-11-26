@@ -2,28 +2,28 @@
   <app-section-header sectionId="experience" />
 
   <ol class="timeline">
-    @for (job of experience; track job.company + job.position) {
+    @for (job of experience; track $index) {
       <li class="timeline__item card" appReveal>
         <header class="timeline__header">
           <div>
-            <h3 class="timeline__title">{{ job.position }}</h3>
+            <h3 class="timeline__title">{{ job.position | tr }}</h3>
             <p class="timeline__company">
               {{ job.company }}
               @if (job.location) {
-                <span class="timeline__location">· {{ job.location }}</span>
+                <span class="timeline__location">· {{ job.location | tr }}</span>
               }
             </p>
           </div>
-          <span class="tag">{{ job.period }}</span>
+          <span class="tag">{{ job.period | tr }}</span>
         </header>
 
         @if (job.summary) {
-          <p class="timeline__summary">{{ job.summary }}</p>
+          <p class="timeline__summary">{{ job.summary | tr }}</p>
         }
 
         <ul class="timeline__highlights">
           @for (h of job.highlights; track $index) {
-            <li>{{ h }}</li>
+            <li>{{ h | tr }}</li>
           }
         </ul>
 

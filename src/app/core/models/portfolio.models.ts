@@ -3,12 +3,22 @@
  * Todo el contenido del sitio se describe con estos tipos,
  * así TypeScript te avisa si falta algún dato o tiene un formato incorrecto.
  */
+import type { SkillIconId } from '../../shared/components/skill-icon/skill-icons';
+
+export type Lang = 'es' | 'en';
+
+/**
+ * Texto traducible.
+ * - Un string simple se muestra igual en ambos idiomas ('Node.js').
+ * - Un objeto { es, en } se muestra según el idioma activo.
+ */
+export type Text = string | Record<Lang, string>;
 
 export type SocialPlatform = 'github' | 'linkedin' | 'x' | 'email' | 'website';
 
 export interface SocialLink {
   platform: SocialPlatform;
-  label: string;
+  label: Text;
   url: string;
 }
 
@@ -16,44 +26,49 @@ export interface Profile {
   name: string;
   /** Nombre corto para la tarjeta de código del hero */
   shortName: string;
-  role: string;
-  tagline: string;
-  location: string;
+  role: Text;
+  tagline: Text;
+  location: Text;
   email: string;
-  /** Áreas de enfoque (se muestran en la tarjeta del hero) */
+  /** Áreas de enfoque (tarjeta del hero y "Sobre mí") */
   focus: string[];
-  /** Tecnologías principales (se muestran en la tarjeta del hero) */
+  /** Tecnologías principales (tarjeta del hero) */
   coreStack: string[];
   /** Ruta dentro de /public, p. ej. 'images/avatar.webp' */
   avatar?: string;
   /** Ruta dentro de /public, p. ej. 'cv.pdf' */
   cvUrl?: string;
-  /** Texto de la etiqueta de disponibilidad; omítelo para ocultarla */
-  availability?: string;
-  about: string[];
+  /** Etiqueta de disponibilidad; omítela para ocultarla */
+  availability?: Text;
+  about: Text[];
   socials: SocialLink[];
 }
 
+export interface Skill {
+  name: Text;
+  /** Clave del icono en shared/components/skill-icon/skill-icons.ts */
+  icon: SkillIconId;
+}
+
 export interface SkillGroup {
-  category: string;
-  items: string[];
+  category: Text;
+  items: Skill[];
 }
 
 export interface Experience {
   company: string;
-  position: string;
-  /** Texto libre: '4 meses', 'Ene 2025 — Abr 2025', etc. */
-  period: string;
-  location?: string;
-  summary?: string;
-  highlights: string[];
+  position: Text;
+  period: Text;
+  location?: Text;
+  summary?: Text;
+  highlights: Text[];
   stack?: string[];
 }
 
 export interface Project {
   title: string;
-  subtitle: string;
-  description: string;
+  subtitle: Text;
+  description: Text;
   stack: string[];
   image?: string;
   repoUrl?: string;
@@ -63,14 +78,13 @@ export interface Project {
 
 export interface Education {
   institution: string;
-  degree: string;
-  /** Texto libre: 'Finalización: 2026', '2019 — 2023', etc. */
-  period?: string;
+  degree: Text;
+  period?: Text;
 }
 
 export interface Language {
-  name: string;
-  level: string;
+  name: Text;
+  level: Text;
 }
 
 export interface PortfolioData {
@@ -84,5 +98,5 @@ export interface PortfolioData {
 
 export interface NavSection {
   id: string;
-  label: string;
+  label: Text;
 }

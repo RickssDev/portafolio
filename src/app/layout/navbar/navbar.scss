@@ -65,6 +65,29 @@
   }
 }
 
+.nav__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 2.5rem;
+  padding-inline: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration) var(--ease);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  .is-current {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+}
+
 .nav__toggle {
   display: none;
 }

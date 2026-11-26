@@ -1,7 +1,7 @@
-<nav class="nav container" aria-label="Principal">
+<nav class="nav container" [attr.aria-label]="ui.main | tr">
   <a href="#top" class="nav__brand" (click)="menuOpen.set(false)">
-    <span aria-hidden="true">{{ initials() }}</span>
-    <span class="sr-only">{{ profile.name }} — inicio</span>
+    <span aria-hidden="true">{{ initials }}</span>
+    <span class="sr-only">{{ profile.name }} — {{ ui.home | tr }}</span>
   </a>
 
   <ul id="nav-menu" class="nav__links" [class.is-open]="menuOpen()">
@@ -14,7 +14,7 @@
           [attr.aria-current]="activeId() === section.id ? 'location' : null"
           (click)="menuOpen.set(false)"
         >
-          {{ section.label }}
+          {{ section.label | tr }}
         </a>
       </li>
     }
@@ -23,9 +23,21 @@
   <div class="nav__actions">
     <button
       type="button"
+      class="nav__lang"
+      (click)="i18n.toggle()"
+      [attr.aria-label]="ui.switchLang | tr"
+      [attr.title]="ui.switchLang | tr"
+    >
+      <span [class.is-current]="i18n.lang() === 'es'">ES</span>
+      <span aria-hidden="true">/</span>
+      <span [class.is-current]="i18n.lang() === 'en'">EN</span>
+    </button>
+
+    <button
+      type="button"
       class="nav__icon-btn"
       (click)="theme.toggle()"
-      [attr.aria-label]="theme.theme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+      [attr.aria-label]="(theme.theme() === 'dark' ? ui.toLight : ui.toDark) | tr"
     >
       <app-icon [name]="theme.theme() === 'dark' ? 'sun' : 'moon'" />
     </button>
@@ -36,7 +48,7 @@
       (click)="menuOpen.set(!menuOpen())"
       [attr.aria-expanded]="menuOpen()"
       aria-controls="nav-menu"
-      aria-label="Abrir menú"
+      [attr.aria-label]="(menuOpen() ? ui.closeMenu : ui.openMenu) | tr"
     >
       <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
     </button>

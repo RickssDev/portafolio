@@ -1,0 +1,22 @@
+<section id="skills" class="section container" aria-labelledby="skills-title">
+  <app-section-header sectionId="skills" />
+
+  <div class="skills">
+    @for (group of skills; track $index) {
+      <article class="skill-group" appReveal>
+        <h3 class="skill-group__title"><span aria-hidden="true">//</span> {{ group.category | tr }}</h3>
+
+        <ul class="skill-grid">
+          @for (skill of group.items; track $index; let i = $index) {
+            <li class="skill-tile" [style.--brand]="color(skill.icon)" [style.--i]="i">
+              <span class="skill-tile__icon">
+                <app-skill-icon [name]="skill.icon" />
+              </span>
+              <span class="skill-tile__name">{{ skill.name | tr }}</span>
+            </li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+</section>

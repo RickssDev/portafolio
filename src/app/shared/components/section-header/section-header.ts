@@ -1,14 +1,16 @@
 import { Component, computed, input } from '@angular/core';
 import { NAV_SECTIONS, sectionNumber } from '../../../core/data/portfolio.data';
+import { TrPipe } from '../../../core/i18n/tr.pipe';
 
 /** Encabezado de sección: número y título salen de NAV_SECTIONS. */
 @Component({
   selector: 'app-section-header',
+  imports: [TrPipe],
   template: `
     <header class="section-header">
       <h2 class="section-header__title" [id]="sectionId() + '-title'">
         <span class="section-header__number">{{ number() }}</span>
-        {{ title() }}
+        {{ title() | tr }}
       </h2>
       <span class="section-header__line" aria-hidden="true"></span>
     </header>
